@@ -1,0 +1,73 @@
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+
+export default function LoginPage(){
+
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
+
+    function handleLogin(){
+        console.log("Email:",email);
+        console.log("Password:",password);
+         
+        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/user/login",{
+            email:email,
+            password:password
+        }).then((response)=>{
+            console.log("Login successful",response.data);
+            toast.success("Login successful");
+            localStorage.setItem("token",response.data.token);
+            const token=localStorage.getItem("token");
+
+            const user=response.data.user;
+            if(user.role==="admin"){
+                window.location.href="/admin"
+            }
+            else{
+                window.location.href="/"
+            }
+
+
+           
+        }
+    ).catch((error)=>{
+        console.log("Login failed",error.response.data);
+        toast.error(error.response.data.message||"Login failed");
+    })
+
+        console.log("Login button clicked");
+        
+    }
+    return(
+        <div className="w-full h-screen bg-[url(/login_bg.jpg)] bg-cover bg-center flex">
+            <div className="w-[50%] h-full">
+
+
+             </div>
+             <div className="w-[50%] h-full flex justify-center items-center">
+                <div className="w-[450px] h-[600px] backdrop-blur-xl shadow-xl rounded-4xl flex justify-center items-center flex-col">
+                    <input 
+                        onChange={(e)=>{
+                        setEmail(e.target.value)
+                    }} 
+                        type="email" placeholder="Email" className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"/>
+
+                    <input 
+                        onChange={(e)=>{
+                        setPassword(e.target.value)
+                        }}  
+                        type="password" placeholder="Password" className="w-[400px] h-[50px] border border-white rounded-xl text-center m-[5px]"/>
+                    
+                    <button 
+                        onClick={handleLogin} 
+                        className="w-[400px] h-[50px] bg-green-500 rounded-xl cursor-pointer">
+                    Login</button>
+                </div>
+
+
+             </div>
+
+        </div>
+    )
+}
