@@ -1,36 +1,27 @@
+import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 
 export default function Testing() {
-    
-    const [number, setNumber] = useState(0);
-    const [status, setStatus] = useState("pending");
-    function increment(){
-        let newValue=number+1;
-      setNumber(newValue)
+    const [file,setFile]=useState(null);
 
-    }
-    function decrement(){
-        let newValue=number-1;
-       setNumber(newValue)
+
+    //https://lfoqcfuszjqbdufhjyqn.supabase.co
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxmb3FjZnVzempxYmR1ZmhqeXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyOTA3MzksImV4cCI6MjA2MTg2NjczOX0.cYpnrKlC823DipXrUjy_MKaoiPo1nNU8I5728029ODg
+    const superbase = createClient("https://lfoqcfuszjqbdufhjyqn.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxmb3FjZnVzempxYmR1ZmhqeXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyOTA3MzksImV4cCI6MjA2MTg2NjczOX0.cYpnrKlC823DipXrUjy_MKaoiPo1nNU8I5728029ODg")
+
+    function handleUpload(){
         
     }
     
-    return (
-        <div className="w-full h-screen flex flex-col justify-center items-center">
-            <span className="text-3xl font-bold">{number}</span>
-            <div className="w-full flex justify-center items-center">
-                <button onClick={increment} className="bg-blue-500 text-white p-2 rounded-lg w-[60px] cursor-pointer">+</button>
-                <button onClick={decrement} className="bg-blue-500 text-white p-2 rounded-lg w-[60px] cursor-pointer">-</button>
-            </div>
-            <span className="text-3xl font-bold">{status}</span>
-            <div className="w-full flex justify-center items-center">
-                <button onClick={()=>{
-                    setStatus("passed")
-                }} className="bg-blue-500 text-white p-2 rounded-lg w-[60px] cursor-pointer">Pass</button>
-                <button onClick={()=>{
-                    setStatus("failed")
-                }} className="bg-blue-500 text-white p-2 rounded-lg w-[60px] cursor-pointer">Fail</button>
-            </div>
-        </div>
-    )
+   return(
+    <div className="w-full h-screen flex flex-col justify-center items-center">
+        <input type="file" onChange={
+            (e)=>{
+                setFile(e.target.files(0))
+            }
+        } />
+        <button onClick={handleUpload} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
+    </div>
+   )
+    
 }
