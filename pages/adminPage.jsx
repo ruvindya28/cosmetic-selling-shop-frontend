@@ -15,12 +15,12 @@ export default function AdminPage() {
          
            
            <div className="h-full bg-white w-[calc(100vw-300px)] rounded-lg">
-               <Routes path="/*" >
-               <Route path="/users" element={<h1>Users</h1>}/>
-               <Route path="/products" element={<h1>{<AdminProductsPage/>}</h1>}/>
-               <Route path="/orders" element={<h1>Orders</h1>}/>
-
-               </Routes>
+            <Routes path="/*" >
+                <Route path="/users" element={<h1>Users</h1>}/>
+                <Route path="/products" element={<AdminProductsPage />}/>
+                <Route path="/orders" element={<h1>Orders</h1>}/>
+                <Route path="/addProduct" element={<h1>Add Product</h1>}/>
+            </Routes>
            </div>
         </div>
     )
