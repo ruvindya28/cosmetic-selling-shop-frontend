@@ -12,14 +12,25 @@ export default function AddProductForm() {
     const [labeledPrice,setLabeledPrice]=useState("");
     const [description,setDescription]=useState("");
     const [stock,setStock]=useState("");
+    const [images,setImages]=useState([]);
     const navigate=useNavigate();
-    function handleSubmit(){
-      
-        const altNamesArray=altNames.split(",")
+    async function handleSubmit(){
+        
+        const promisesArray=[]
+        for(let i=0;i<images.length;i++){
+           const promise=mediaUpload(images[i]);
+           promisesArray[i]=promise
+        }
+
+        try{
+        const result=await Promise.all(promisesArray);
+        console.log(result);
+    
+        const altNamesInArray=altNames.split(",")
         const product={
             productId:productId,
             name:name,
-            altNames:altNamesArray,
+            altNames:altNamesInArray,
             price:price,
             labeledPrice:labeledPrice,
             description:description,
@@ -38,14 +49,17 @@ export default function AddProductForm() {
             headers: {
                 "Authorization": "Bearer " + token
               }
-        }).then(()=>{
-            toast.success("Product added successfully");
-            navigate("/admin/products");
-        }).catch(()=>{
-            toast.error("Product not added");
-        })
         
+        })
+        toast.success("Product added successfully");
+        navigate("/admin/products");
+        
+    }catch(error){
+        console.log(error);
+        toast.error("File upload failed")
     }
+    }
+    
     return (
         <div className="w-full h-full rounded-lg flex justify-center items-center">
             <div className="w-[600px] h-[700px] rounded-lg shadow-lg flex flex-col items-center p-10 relative">
@@ -102,7 +116,19 @@ export default function AddProductForm() {
                     className="w-[400px] h-[50px] border border-gray-500 rounded-xl text-center m-[5px]" 
                     placeholder="Description" 
                 />
-                <input 
+                <input
+                type="file"
+                onChange={(e)=>{
+                    setImages(e.target.files);
+
+                }}
+                multiple
+                className="w-[400px] h-[50px] border border-gray-500 rounded-xl text-center m-[5px]" 
+                placeholder="Images"
+                />
+                          
+                
+                 <input 
                     value={stock}
                     onChange={(e)=>{
                         setStock(e.target.value);
