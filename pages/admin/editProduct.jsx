@@ -1,21 +1,27 @@
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import mediaUpload from "../../src/utils/mediaUpload";
 
 
-export default function AddProductForm() {
-
-    const [productId,setProductId]=useState("");
-    const [name,setName]=useState("");
-    const [altNames,setAltNames]=useState("");
-    const [price,setPrice]=useState("");
-    const [labeledPrice,setLabeledPrice]=useState("");
-    const [description,setDescription]=useState("");
-    const [stock,setStock]=useState("");
-    const [image,setImage]=useState([]);
+export default function EditProductForm() {
+    const locationData = useLocation();
     const navigate=useNavigate();
+    if (locationData.state == null) {
+        toast.error("Please select a product to edit");
+        window.location.href = "/admin/products";
+        
+    }
+    const [productId,setProductId]=useState(locationData.state.productId);
+    const [name,setName]=useState(locationData.state.name);
+    const [altNames,setAltNames]=useState( locationData.state.altNames.join(","));
+    const [price,setPrice]=useState(locationData.state.price);
+    const [labeledPrice,setLabeledPrice]=useState( locationData.state.labeledPrice);
+    const [description,setDescription]=useState(locationData.state.description);
+    const [stock,setStock]=useState(locationData.state.stock);
+    const [image,setImage]=useState([]);
+   
     async function handleSubmit(){
         
         const promisesArray=[]
@@ -26,12 +32,15 @@ export default function AddProductForm() {
 
         try{
 
-        const result = await Promise.all(promisesArray);
+        let result = await Promise.all(promisesArray);
+
+        if(image.length==0){
+            result=locationData.state.image;
+        }
         
     
         const altNamesInArray=altNames.split(",")
         const product={
-            productId:productId,
             name:name,
             altNames:altNamesInArray,
             price:price,
@@ -44,26 +53,27 @@ export default function AddProductForm() {
         const token=localStorage.getItem("token");
         console.log(token);  
         
-        await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/product", product, {
+        await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/product/"+productId, product, {
             headers: {
               "Authorization": "Bearer " + token
             }
           });
-        toast.success("Product added successfully")
+        toast.success("Product updated successfully")
         navigate("/admin/products");
         
     }catch(error){
         console.log(error);
-        toast.error("File upload failed")
+        toast.error("File updating failed")
     }
     }
     
     return (
         <div className="w-full h-full rounded-lg flex justify-center items-center">
             <div className="w-[600px] h-[700px] rounded-lg shadow-lg flex flex-col items-center p-10 relative">
-                <h1 className="text-3xl font-bold text-gray-700 m-[10px]">Add Product</h1>
+                <h1 className="text-3xl font-bold text-gray-700 m-[10px]">Edit Product</h1>
 
                 <input 
+                    disabled
                     value={productId}
                     onChange={(e)=>{
                         setProductId(e.target.value);
@@ -142,7 +152,8 @@ export default function AddProductForm() {
                     >
                         Cancel
                     </Link>
-                    <button onClick={handleSubmit} className="bg-green-500 text-white p-[10px] w-[200px] ml-[10px] text-center rounded-lg cursor-pointer hover:bg-green-600 hover:text-white">Add Product</button>
+                    <button onClick={handleSubmit} className="bg-green-500 text-white p-[10px] w-[200px] ml-[10px] text-center rounded-lg cursor-pointer hover:bg-green-600 hover:text-white">
+                        Edit Product</button>
                 </div>
             </div>
         </div>
