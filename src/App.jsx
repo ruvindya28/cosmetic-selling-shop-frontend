@@ -4,6 +4,7 @@ import LoginPage from '../pages/loginPage'
 import './App.css'
 import Testing from '../pages/testing';
 import { Toaster } from 'react-hot-toast';
+import RegisterPage from '../pages/client/register';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 <Route path="/admin/*" element={<AdminPage />} />
 <Route path="/login" element={<LoginPage />} />
 <Route path="/testing" element={<Testing />} />
+<Route path="/register" element={<RegisterPage />} />
 <Route path="/" element={<h1>Home</h1>}/>
 <Route path="/*" element={<h1>404 not found</h1>}/>
 
