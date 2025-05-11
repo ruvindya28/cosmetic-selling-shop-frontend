@@ -1,9 +1,15 @@
+import { Link } from "react-router-dom";
 
 
 export default function Header() {
     return (  
-        <header className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 h-[60px] text-white shadow-lg flex items-center justify-center">
-        <h1 className="text-xl font-semibold tracking-wide">My Store</h1>
+        <header className="h-[70px] w-full flex justify-center items-center">
+            <div className="w-[500px] h-full flex items-center justify-evenly text-pink-400 text-xl">
+        <Link to="/">Home</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/contact">Contact Us</Link>
+        <Link to="/reviews">Reviews</Link>
+        </div>
     </header>
     )
 }
