@@ -1,5 +1,5 @@
 import { TbTrash } from "react-icons/tb";
-import { addToCart, getCart, removeFromCart } from "../../src/utils/cart";
+import { addToCart, getCart, getTotal, getTotalLabeledPrice, removeFromCart } from "../../src/utils/cart";
 import { useEffect, useState } from "react";
 
 export default function CartPage() {
@@ -26,7 +26,7 @@ export default function CartPage() {
                                        removeFromCart(item.productId)
                                        setCartLoaded(false);
                                     }}>
-                                    <TbTrash className=""/>
+                                    <TbTrash/>
                                  </button>
                                 <img src={item.image} className="h-full aspect-square object-cover" />
                                 
@@ -55,12 +55,30 @@ export default function CartPage() {
                                 </div>
 
                                 <div className="h-full w-[100px] flex justify-center items-center text-xl font-semibold">
-                                    {(item.price * item.quantity).toFixed(2)}
+                                  <h1 className="text-xl w-full text-end pr-2"> {(item.price * item.quantity).toFixed(2)}</h1> 
                                 </div>
                             </div>
                         );
                     })
                 }
+                <div className="w-full flex justify-end">
+                       <h1 className="w-[100px]  text-end text-xl pr-2">Total</h1>
+                       <h1 className="w-[100px]  text-end text-xl pr-2">{getTotalLabeledPrice().toFixed(2)}</h1>
+                </div>
+                <div className="w-full flex justify-end">
+                       <h1 className="w-[100px]  text-end text-xl pr-2">Discount</h1>
+                       <h1 className="w-[100px]  text-end text-xl border-b-[2px] pr-2">{(getTotalLabeledPrice() - getTotal()).toFixed(2)}</h1>
+                </div>
+                <div className="w-full flex justify-end">
+                       <h1 className="w-[100px]  text-end text-xl pr-2">Net total</h1>
+                       <h1 className="w-[100px]  text-end text-xl pr-2 border-b-[4px] border-double ">{getTotal().toFixed(2)}</h1>
+                </div>
+                <div className="w-full flex justify-end mt-4">
+                    <button className="w-[170px] text-xl text-center shadow pr-2 cursor-pointer text-white h-[40px] bg-pink-400 rounded-lg"
+                    onClick={() =>{
+
+                     window.location.href = "/checkout"}}>Checkout</button>
+                </div>
             </div>
         </div>
     );
