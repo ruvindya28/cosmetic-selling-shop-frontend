@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../../src/components/loader";
@@ -14,7 +14,8 @@ export default function ProductOverview() {
     }
 
     const [product, setProduct] = useState(null);
-    const [status, setStatus] = useState("loading"); //LOADED ERROR
+    const [status, setStatus] = useState("loading"); 
+    const navigate= useNavigate();//LOADED ERROR
 
     useEffect(()=>{
         if(status == "loading"){
@@ -70,7 +71,26 @@ export default function ProductOverview() {
                                 }
                             }
                             >Add to Cart</button>
-                            <button className="bg-pink-500 hover:bg-white border border-pink-800 cursor-pointer text-white hover:text-pink-500 font-bold py-2 px-4 rounded">Buy Now</button>
+
+                            <button
+                             onClick={() => 
+                             {
+                                navigate("/checkout", { 
+                                    state: { 
+                                        items: [
+                                            {
+                                                productId: product._id,
+                                                name: product.name,
+                                                altNames: product.altNames,
+                                                price: product.price,
+                                                labeledPrice: product.labeledPrice,
+                                                image: product.image[0],
+                                                quantity: 1
+                                            }
+                                        ] 
+                                        } 
+                                    })
+                                }} className="bg-pink-500 hover:bg-white border border-pink-800 cursor-pointer text-white hover:text-pink-500 font-bold py-2 px-4 rounded">Buy Now</button>
 
                         </div>
                     </div>

@@ -1,10 +1,12 @@
 import { TbTrash } from "react-icons/tb";
 import { addToCart, getCart, getTotal, getTotalLabeledPrice, removeFromCart } from "../../src/utils/cart";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
     const [cartLoaded, setCartLoaded] = useState(false);
     const [cart, setCart] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(cartLoaded == false){
@@ -75,9 +77,14 @@ export default function CartPage() {
                 </div>
                 <div className="w-full flex justify-end mt-4">
                     <button className="w-[170px] text-xl text-center shadow pr-2 cursor-pointer text-white h-[40px] bg-pink-400 rounded-lg"
-                    onClick={() =>{
-
-                     window.location.href = "/checkout"}}>Checkout</button>
+                    onClick={() => {
+    navigate("/checkout", {
+        state: {
+            items: cart
+        }
+    }); 
+}}
+>Checkout</button>
                 </div>
             </div>
         </div>
