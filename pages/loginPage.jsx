@@ -8,20 +8,21 @@ import { GrGoogle } from "react-icons/gr";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   const loginWithGoogle = useGoogleLogin(
     {
-            onSuccess: (res) => {
-                setLoading(true);
-                axios.post(import.meta.env.VITE_BACKEND_URL+"/api/user/google",{
-                    accessToken: res.access_token
-                }).then(
-                    (response)=>{
-                        console.log("Login successfull", response.data);
+      onSuccess : (res)=>{
+        setLoading(true)
+        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/user/google",{
+          accessToken : res.access_token
+        }).then(
+          (response)=>{
+             console.log("Login successfull", response.data);
                 toast.success("Login successfull");
                 localStorage.setItem("token", response.data.token);
+
 
                 const user = response.data.user;
                 if(user.role === "admin"){
@@ -32,14 +33,14 @@ export default function LoginPage() {
                     navigate("/");
                 }
             setLoading(false);
-                    }
-                )
-            },
-            onError: (error) => {
-                console.log("Login Failed", error);
-            }
-        }
-  );
+          }
+        )
+        
+      }
+    }
+  )
+    
+           
 
   // Manual login handler
   function handleLogin(){
@@ -53,6 +54,7 @@ export default function LoginPage() {
                 console.log("Login successfull", response.data);
                 toast.success("Login successfull");
                 localStorage.setItem("token", response.data.token);
+
 
                 const user = response.data.user;
                 if(user.role === "admin"){
@@ -107,8 +109,10 @@ export default function LoginPage() {
             className="w-[400px] h-[50px] bg-green-500 rounded-xl cursor-pointer flex justify-center items-center mt-2 text-white font-semibold"
             
           >
+             
             <GrGoogle className="mr-[10px]" />
-            Login with Google
+            {loading ? "Loading..." : "Login with google"}
+           
           </button>
 
           <p className="text-gray-600 text-center m-[10px] mt-4">
