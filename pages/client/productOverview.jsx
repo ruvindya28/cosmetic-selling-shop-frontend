@@ -41,8 +41,8 @@ export default function ProductOverview() {
             }
             {
                 status == "loaded" && 
-                <div className="w-full h-full flex"> 
-                     <div className="w-[50%] h-full">
+                <div className="w-full h-full flex-col"> 
+                     <div className="w-full h-full">
                         <ImageSlider image={product.image}/>
                         
                     </div>
