@@ -42,12 +42,12 @@ export default function ProductOverview() {
             {
                 status == "loaded" && 
                 <div className="w-full h-full flex-col"> 
-                     <div className="w-full h-full">
+                     <div className="w-full">
                         <ImageSlider image={product.image}/>
                         
                     </div>
                     <div className="w-[50%] h-full p-[40px]">{"  "}
-                        <h1 className="text-3xl font-bold text-center mb-[40px]">{product.name}{"   "}
+                        <h1 className="text-3xl font-bold hidden text-center mb-[40px]">{product.name}{"   "}
                             <span className="text-3xl font-semibolt text-center text-gray-500 mr-[20px]">{product.altNames.join(" | ")}</span></h1>
                         <div className="w-full flex justify-center mb-[40px] ">
                             {
