@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const images = ["/h2.jpg", "/h3.jpg", "/h1.jpg"];
+const images = ["/h1.jpg", "/h3.jpg", "/h2.jpg"];
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
@@ -23,7 +23,7 @@ export default function Carousel() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden bg-white">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -31,15 +31,15 @@ export default function Carousel() {
         {images.map((src, index) => (
           <div
             key={index}
-            className="w-full h-screen flex-shrink-0 flex items-center justify-center p-4"
+            className="w-full h-screen flex-shrink-0 flex items-center justify-center p-4 bg-white relative"
           >
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover rounded-xl shadow-lg"
             />
-            {/* Optional gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none"></div>
+            {/* Optional gradient overlay (can be removed or edited) */}
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none" /> */}
           </div>
         ))}
       </div>
