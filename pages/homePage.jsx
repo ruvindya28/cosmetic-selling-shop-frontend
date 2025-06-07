@@ -5,6 +5,8 @@ import ProductOverview from "./client/productOverview";
 import CartPage from "./client/cart";
 import CheckoutPage from "./client/checkout";
 import Home from "./client/home";
+import ContactPage from "./client/contact";
+import ReviewPage from "./client/review";
 
 export default function HomePage() {
     return (
@@ -18,6 +20,8 @@ export default function HomePage() {
             <Route path="/overview/:id" element={<ProductOverview/>} />
             <Route path="/cart" element={<CartPage/>} />
             <Route path="/checkout" element={<CheckoutPage/>} />
+            <Route path="/contact" element={<ContactPage/>} />
+            <Route path="/review" element={<ReviewPage/>} />
             <Route path="/*" element={<h1>404 Not found</h1>} />
             </Routes>
         </div>
