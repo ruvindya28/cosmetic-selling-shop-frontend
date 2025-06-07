@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const images = [
-  "/images/h1.jpg",
-  "/images/h2.jpg",
-  "/images/h1.jpg",
+  "/h1.jpg",
+  "/h2.jpg",
+  "/h1.jpg",
 ];
 
 export default function Carousel() {
@@ -27,7 +27,7 @@ export default function Carousel() {
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+    <div className="relative w-full h-screen">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -37,7 +37,7 @@ export default function Carousel() {
             key={index}
             src={src}
             alt={`Slide ${index + 1}`}
-            className="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
+            className="w-full h-full object-cover"
           />
         ))}
       </div>
