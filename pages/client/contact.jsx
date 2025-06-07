@@ -72,14 +72,15 @@ export default function ContactPage() {
 
       {/* Optional Map */}
       <div className="mt-10 w-full max-w-4xl h-64 rounded-xl overflow-hidden shadow-md">
-        <iframe
-          title="Shop Location"
-          className="w-full h-full"
-          src="https://maps.google.com/maps?q=New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          allowFullScreen
-          loading="lazy"
-        ></iframe>
-      </div>
+  <iframe
+    title="Shop Location"
+    className="w-full h-full"
+    src="https://maps.google.com/maps?q=Colombo,%20Sri%20Lanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    allowFullScreen
+    loading="lazy"
+  ></iframe>
+</div>
+
     </div>
   );
 }

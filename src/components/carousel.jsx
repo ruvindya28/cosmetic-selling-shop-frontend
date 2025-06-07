@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const images = ["/h1.jpg", "/h3.jpg", "/h2.jpg"];
+const images = ["/h1.jpg", "/h3.jpg", "/h2.jpg"]; // Update paths as needed
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
@@ -23,7 +23,7 @@ export default function Carousel() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-white">
+    <div className="relative w-full h-[500px] overflow-hidden bg-white">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -31,15 +31,14 @@ export default function Carousel() {
         {images.map((src, index) => (
           <div
             key={index}
-            className="w-full h-screen flex-shrink-0 flex items-center justify-center p-4 bg-white relative"
+            className="w-full h-[500px] flex-shrink-0 flex items-center justify-center p-4 bg-white relative"
           >
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover rounded-xl shadow-lg"
+              className="w-full h-full object-cover rounded-xl shadow-lg transition-opacity duration-500"
+              loading="lazy"
             />
-            {/* Optional gradient overlay (can be removed or edited) */}
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none" /> */}
           </div>
         ))}
       </div>
@@ -47,26 +46,29 @@ export default function Carousel() {
       {/* Arrows */}
       <button
         onClick={prevSlide}
+        aria-label="Previous Slide"
         className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition"
       >
         <FaChevronLeft className="w-5 h-5 text-gray-800" />
       </button>
       <button
         onClick={nextSlide}
+        aria-label="Next Slide"
         className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition"
       >
         <FaChevronRight className="w-5 h-5 text-gray-800" />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <button
             key={index}
+            aria-label={`Go to slide ${index + 1}`}
             onClick={() => setCurrent(index)}
             className={`w-3 h-3 rounded-full ${
-              index === current ? "bg-white" : "bg-gray-400"
-            } transition`}
+              index === current ? "bg-white scale-110" : "bg-gray-400"
+            } transition transform`}
           />
         ))}
       </div>

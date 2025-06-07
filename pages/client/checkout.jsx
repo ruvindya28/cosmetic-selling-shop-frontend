@@ -55,7 +55,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-md p-8 space-y-8">
-        <h1 className="text-3xl font-semibold text-gray-800 border-b pb-4">
+        <h1 className="text-3xl font-semibold text-pink-600 border-b pb-4">
           Checkout
         </h1>
 

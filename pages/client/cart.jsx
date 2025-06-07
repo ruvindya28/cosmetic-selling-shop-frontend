@@ -19,7 +19,7 @@ export default function CartPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-pink-50 py-10 px-4">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-8">
-        <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-8">🛒 Your Cart</h1>
+        <h1 className="text-4xl font-extrabold text-pink-600 text-center mb-8">🛒 Your Cart</h1>
 
         {cart.length === 0 ? (
           <p className="text-center text-gray-500 text-lg">Your cart is currently empty.</p>

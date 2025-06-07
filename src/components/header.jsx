@@ -15,7 +15,7 @@ export default function Header() {
           className="lg:hidden text-3xl text-pink-400"
           onClick={() => setIsOpen(!isOpen)}
         />
-        <h1 className="text-2xl font-bold text-pink-500 ml-15">BeautyRoom</h1>
+        <h1 className="text-2xl font-bold text-pink-500 ml-15">Crystal Beauty</h1>
       </div>
 
      
