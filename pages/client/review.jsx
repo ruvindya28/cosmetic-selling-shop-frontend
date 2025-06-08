@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
 export default function ReviewPage() {
+  // Reviews state, initially with two reviews
   const [reviews, setReviews] = useState([
     {
       name: "Amaya Silva",
@@ -15,24 +16,34 @@ export default function ReviewPage() {
     },
   ]);
 
+  // Form data state
   const [form, setForm] = useState({ name: "", rating: 0, message: "" });
 
+  // Handle text inputs change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Handle star rating select
   const handleRating = (ratingValue) => {
     setForm((prev) => ({ ...prev, rating: ratingValue }));
   };
 
+  // Submit handler
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Basic validation
     if (!form.name || !form.rating || !form.message) {
       alert("Please fill all fields!");
       return;
     }
+
+    // Add new review at the start of array
     setReviews((prev) => [form, ...prev]);
+
+    // Clear form inputs
     setForm({ name: "", rating: 0, message: "" });
   };
 
