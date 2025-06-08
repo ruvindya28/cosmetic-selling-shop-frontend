@@ -2,25 +2,29 @@ import React from 'react';
 
 export default function AboutSection() {
   return (
-    <div className='border border-gray-200'>
-    <div className="flex flex-col md:flex-row items-center justify-center p-6 md:p-12 bg-gray-100">
-      {/* Left Side Image */}
-      <div className="w-full md:w-1/2 mb-6 md:mb-0">
-        <img
-          src="/about.png" // ⬅️ Replace with correct filename if different
-          alt="About"
-          className="max-w-[400px] rounded-2xl shadow-lg w-full h-auto object-cover mx-auto"
-        />
-      </div>
+    <div className="flex items-center justify-center py-12 px-4 bg-gradient-to-r from-gray-50 to-gray-100 min-h-screen">
+      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full flex flex-col md:flex-row">
+        
+        {/* Left Side Image */}
+        <div className="md:w-1/2 w-full flex items-center justify-center p-6 bg-pink-100">
+          <img
+            src="/about.png" // Replace if needed
+            alt="About"
+            className="w-[300px] h-auto rounded-2xl shadow-md object-cover"
+          />
+        </div>
 
-      {/* Right Side Description */}
-      <div className="w-full md:w-1/2 md:pl-10 text-center md:text-left">
-        <h2 className="text-3xl font-bold mb-4 text-gray-800">About Us</h2>
-        <p className="text-gray-600 text-lg">
-          Welcome to our platform! We are dedicated to providing high-quality content and services to our users. Our team works tirelessly to innovate and improve your experience every day.
-        </p>
+        {/* Right Side Description */}
+         <div className="md:w-1/2 w-full p-10 md:p-14 flex flex-col justify-center bg-pink-200">
+          <h2 className="text-4xl font-bold text-pink-700 mb-20">About Crystal Beauty</h2>
+          <p className="text-pink-900 text-lg leading-relaxed">
+            At <span className="font-semibold">Crystal Beauty</span>, we believe that beauty starts with self-love. 
+            Our mission is to enhance your natural glow with high-quality cosmetics that make you feel confident and radiant every day.
+            From skincare essentials to luxurious makeup, we offer products crafted with care and love.
+          </p>
+        </div>
+
       </div>
-    </div>
     </div>
   );
 }
