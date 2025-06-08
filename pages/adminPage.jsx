@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import {FaUsers} from "react-icons/fa";
 import { MdWarehouse } from "react-icons/md";   
 import { FaFileInvoice } from "react-icons/fa";
@@ -6,10 +6,40 @@ import AdminProductsPage from "./admin/products";
 import AddProductForm from "./admin/addProductForm";
 import EditProductForm from "./admin/editProduct";
 import AdminOrders from "./admin/adminOrders";
+import Loader from "../src/components/loader";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function AdminPage() {
+
+    const[userVlidated, setUserValidated]=useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token == null){
+            toast.error("Please login to access admin page");
+            navigate("/login");
+        }else{
+            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/user/current",
+                 {headers: {
+                    Authorization: "Bearer " + token,
+                }}).then((response) => {
+                      if(response.data.user.role === "admin"){
+                         setUserValidated(true);
+                      }else{
+                        toast.error("You are not an admin")
+                        navigate("/login");
+                      }
+            })
+        }
+        
+        },[]);
+
     return (
+        
         <div className="w-full h-screen bg-gray-200 flex p-2">
+            {userVlidated ? (
+                <>
            <div className="h-full w-[300px]">
            <Link to="/admin/users" className="flex items-center p-2 border"><FaUsers className="mr-2"/>Users</Link>
            <Link to="/admin/products" className="flex items-center p-2 border"><MdWarehouse className="mr-2"/>Products</Link>
@@ -26,6 +56,10 @@ export default function AdminPage() {
                 <Route path="/editProduct" element={<EditProductForm/>}/>
             </Routes>
            </div>
+                </>) : (
+                   <Loader/>
+                )
+}
         </div>
     )
 }
