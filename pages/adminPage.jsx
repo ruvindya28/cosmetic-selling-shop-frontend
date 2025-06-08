@@ -9,6 +9,7 @@ import AdminOrders from "./admin/adminOrders";
 import Loader from "../src/components/loader";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function AdminPage() {
 
@@ -24,13 +25,19 @@ export default function AdminPage() {
                  {headers: {
                     Authorization: "Bearer " + token,
                 }}).then((response) => {
+                      console.log(response.data);
                       if(response.data.user.role === "admin"){
                          setUserValidated(true);
                       }else{
                         toast.error("You are not an admin")
                         navigate("/login");
                       }
-            })
+            }).catch(
+                ()=>{
+                    toast.error("Something went wrong please login");
+                    navigate("/login");
+                }
+            )
         }
         
         },[]);
