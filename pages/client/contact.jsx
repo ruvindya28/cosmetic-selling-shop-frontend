@@ -1,18 +1,29 @@
-import { useState } from "react";
+import React from "react";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [result, setResult] = React.useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    const formData = new FormData(event.target);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Message sent! 📨");
-    // Here you could integrate with a backend or service like Formspree
-    setForm({ name: "", email: "", message: "" });
+    // Replace with your actual Web3Forms access key
+    formData.append("access_key", "160718ea-a5ec-4ec8-b52b-85375e534016");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("✅ Message sent successfully!");
+      event.target.reset();
+    } else {
+      setResult("❌ " + data.message);
+    }
   };
 
   return (
@@ -33,12 +44,10 @@ export default function ContactPage() {
         </div>
 
         {/* Contact Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-4">
           <input
             type="text"
             name="name"
-            value={form.name}
-            onChange={handleChange}
             placeholder="Your Name"
             required
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
@@ -46,41 +55,40 @@ export default function ContactPage() {
           <input
             type="email"
             name="email"
-            value={form.email}
-            onChange={handleChange}
             placeholder="Your Email"
             required
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
           />
           <textarea
             name="message"
-            value={form.message}
-            onChange={handleChange}
             placeholder="Your Message"
             rows={5}
             required
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
           ></textarea>
+
           <button
             type="submit"
             className="w-full bg-pink-500 text-white py-3 rounded-lg hover:bg-pink-600 transition"
           >
             Send Message
           </button>
+
+          {/* Submission result */}
+          <p className="text-sm text-gray-600">{result}</p>
         </form>
       </div>
 
       {/* Optional Map */}
       <div className="mt-10 w-full max-w-4xl h-64 rounded-xl overflow-hidden shadow-md">
-  <iframe
-    title="Shop Location"
-    className="w-full h-full"
-    src="https://maps.google.com/maps?q=Colombo,%20Sri%20Lanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    allowFullScreen
-    loading="lazy"
-  ></iframe>
-</div>
-
+        <iframe
+          title="Shop Location"
+          className="w-full h-full"
+          src="https://maps.google.com/maps?q=Colombo,%20Sri%20Lanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          allowFullScreen
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   );
 }

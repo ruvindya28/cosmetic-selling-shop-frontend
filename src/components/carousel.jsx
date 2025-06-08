@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const images = ["/h1.jpg", "/h3.jpg", "/h2.jpg"]; // Update paths as needed
+const images = ["/h2.jpg", "/h1.jpg", "/h3.jpg"]; // Update paths as needed
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
