@@ -23,7 +23,7 @@ export default function HomePage() {
                     <Route path="/checkout" element={<CheckoutPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/review" element={<ReviewPage />} />
-                    <Route path="*" element={<h1>404 Not Found</h1>} />
+                    <Route path="/*" element={<h1>404 Not Found</h1>} />
                 </Routes>
             </div>
 
