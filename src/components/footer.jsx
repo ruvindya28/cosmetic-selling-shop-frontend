@@ -1,5 +1,6 @@
 // Footer.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const linkSections = [
@@ -18,10 +19,10 @@ const Footer = () => {
     ];
 
     return (
-        <div className="px-6 md:px-16 lg:px-24 xl:px-32">
+        <div className="px-6 md:px-16 lg:px-24 xl:px-32  bg-pink-50">
             <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500">
                 <div>
-                    <h1 className="text-pink-500 text-bolt">CRYSTAL BEAUTY</h1>
+                    <h1 className="text-2xl font-bold text-pink-500 pl-10"><Link to="/">CRYSTAL BEAUTY</Link></h1>
                     <p className="max-w-[410px] mt-6">Crystal beauty is a beauty website that provides a wide range of skincare and makeup products for all skin types.</p>
                 </div>
                 <div className="flex flex-wrap justify-between w-full md:w-[45%] gap-5">
