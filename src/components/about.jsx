@@ -8,7 +8,7 @@ export default function AboutSection() {
         {/* Left Side Image */}
         <div className="md:w-1/2 w-full flex items-center justify-center p-6 bg-pink-100">
           <img
-            src="/about.png" // Replace if needed
+            src="/about1.jpg" // Replace if needed
             alt="About"
             className="w-[300px] h-auto rounded-2xl shadow-md object-cover"
           />
