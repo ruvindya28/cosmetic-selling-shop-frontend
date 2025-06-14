@@ -93,7 +93,9 @@ export default function ProductOverview() {
                                         ] 
                                         } 
                                     })
-                                }} className="bg-pink-500 hover:bg-white border border-pink-800 cursor-pointer text-white hover:text-pink-500 font-bold py-2 px-4 rounded">Buy Now</button>
+                                }} className="bg-pink-500 hover:bg-white border border-pink-800 cursor-pointer text-white hover:text-pink-500 font-bold py-2 px-4 rounded"
+                            >Buy Now
+                            </button>
 
                         </div>
                     </div>
