@@ -6,14 +6,14 @@ import { addToCart, getCart } from "../utils/cart";
 import { FaShoppingCart } from "react-icons/fa";
 import toast from "react-hot-toast";
 
-export default function NewArrivals() {
+export default function BestSellers() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_BACKEND_URL + "/api/product/new-arrivals")
+      .get(import.meta.env.VITE_BACKEND_URL + "/api/product/best-sellers")
       .then((response) => {
         setProducts(response.data.products || []);
         setLoading(false);
@@ -42,10 +42,10 @@ export default function NewArrivals() {
 
   return (
     <div className="container mx-auto px-6 py-12 text-gray-800">
-      <h2 className="text-3xl font-bold mb-8 text-center">✨ New Arrivals</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center">🔥 Best Sellers</h2>
 
       {products.length === 0 ? (
-        <p className="text-center text-gray-500">No products found.</p>
+        <p className="text-center text-gray-500">No best sellers available.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products.map((product) => (

@@ -1,6 +1,7 @@
-import AboutSection from "../../src/components/about";
+import BestSellers from "../../src/components/bestSellers";
 import Carousel from "../../src/components/carousel";
 import NewArrivals from "../../src/components/newArrivals";
+import TrustSection from "../../src/components/trustSection";
 
 
 export default function Home() {
@@ -8,8 +9,8 @@ export default function Home() {
         <div>
             <Carousel  />
             <NewArrivals />
-            <AboutSection/>
-           
+            <BestSellers />
+            <TrustSection/>
         </div>
     )
 }

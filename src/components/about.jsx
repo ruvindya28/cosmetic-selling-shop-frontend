@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function AboutSection() {
   return (
     <div className="flex items-center justify-center py-12 px-4 bg-gradient-to-r from-gray-50 to-gray-100">
