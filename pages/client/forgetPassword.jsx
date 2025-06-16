@@ -23,6 +23,25 @@ export default function ForgetPasswords() {
         })
     }
 
+    function changePassword(){
+        if(password !== confirmPassword){
+            toast.error("Passwords do not match!");
+            return;
+        }
+
+        axios.post(import.meta.env.VITE_BACKEND_URL + "/api/user/changePassword", {
+            email: email,
+            otp: otp,
+            password: password
+        }).then((response) => {
+            console.log(response.data);
+            toast.success("Password reset successfully!");
+        }).catch((error) => {
+            console.error(error);
+            toast.error("Failed to reset password. Please try again.");
+        })
+    }
+
 
     return (
         <div className="w-full h-screen bg-gray-200 flex p-2">
@@ -70,6 +89,7 @@ export default function ForgetPasswords() {
                             />
                         </div>
                         <button
+                        onClick={changePassword}
                             type="submit"
                             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
                     >Reset Password</button>
