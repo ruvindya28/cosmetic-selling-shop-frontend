@@ -26,8 +26,7 @@ export default function ProductsPage() {
 )
 
 function searchProducts() {
-  axios
-    .get(import.meta.env.VITE_BACKEND_URL + "/api/product/search" + search)
+  axios.get(import.meta.env.VITE_BACKEND_URL + "/api/product/search?q=" + search)
     .then((response) => {
       setProductList(response.data.products);
       setProductsLoaded(true);
@@ -40,12 +39,17 @@ function searchProducts() {
 
 function handleReset() {
   setSearch("");
+  setProductsLoaded(false);
 }
 
     return (
         <div className="w-full h-full">
 
-          <SearchBox search={search} setSearch={setSearch} onSearch={searchProducts} onReset={handleReset}/>
+          <SearchBox 
+          search={search} 
+          setSearch={setSearch} 
+          onSearch={searchProducts} 
+          onReset={handleReset}/>
               {
                   productsLoaded?
                   <div className="w-full h-full flex flex-wrap justify-center">

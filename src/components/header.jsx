@@ -4,7 +4,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import { useState } from "react";
-import SearchBar from "./searchBar";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,9 +29,7 @@ export default function Header() {
       </nav>
 
       {/* Desktop search bar */}
-      <div className="hidden lg:block">
-        <SearchBar />
-      </div>
+      
 
       {/* Right side: cart and search icon (mobile) */}
       <div className="flex items-center gap-4 text-3xl text-pink-400 pr-10">
