@@ -10,111 +10,98 @@ import Loader from "../../src/components/loader";
 export default function AdminProductsPage() {
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if(!loaded){
+        if (!loaded) {
             axios.get(import.meta.env.VITE_BACKEND_URL + "/api/product")
                 .then((response) => {
-                    console.log(response.data);
                     setProducts(response.data);
                     setLoaded(true);
-                    
-                      }
-                  )
-              }
-           }
-      ,[loaded]
-)
-  
+                });
+        }
+    }, [loaded]);
 
-    async function deleteProduct(id){
-        const token=localStorage.getItem("token");
-        if(token==null){
-            toast.error("Please login to delete a product")
-            return
+    async function deleteProduct(id) {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            toast.error("Please login to delete a product");
+            return;
         }
 
-        try{
-            await axios.delete(import.meta.env.VITE_BACKEND_URL + "/api/product/"+id,{
-                headers: {
-                    Authorization: "Bearer " + token
-
-                }
-            })
-
+        try {
+            await axios.delete(import.meta.env.VITE_BACKEND_URL + "/api/product/" + id, {
+                headers: { Authorization: "Bearer " + token }
+            });
             setLoaded(false);
-            toast.success("Product deleted successfully")
-
+            toast.success("Product deleted successfully");
+        } catch (error) {
+            console.error(error);
+            toast.error("Error deleting product");
         }
-        catch(error){
-            console.log(error);
-            toast.error("Error deleting product")
-        }
-       
     }
 
     return (
-        <div className="w-full h-full rounded-lg relative">
-            <Link to={"/admin/addProduct"} className="bg-gray-600 text-white p-[12px] text-2xl rounded-full cursor-pointer hover:bg-gray-700 hover:text-white absolute bottom-5 right-5">
-            <FaPlus />
+        <div className="w-full h-full p-6 relative bg-white rounded-lg shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">🛍️ Product Management</h2>
+
+            {/* Add Product Floating Button */}
+            <Link
+                to="/admin/addProduct"
+                className="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white text-xl p-4 rounded-full shadow-lg transition duration-300 z-10"
+                title="Add Product"
+            >
+                <FaPlus />
             </Link>
-            {loaded&&<table className="w-full">
-                <thead>
-                    <tr>
-                        <th className="p-2">Product ID</th>
-                        <th className="p-2">Name</th>
-                        <th className="p-2">Price</th>
-                        <th className="p-2">Labeled Price</th>
-                        <th className="p-2">Stock</th>
-                        <th className="p-2">Actions</th>
-                      
 
-
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                products.map((product, index) => {
-                    return (
-                        <tr key={index} className="border-b-2 border-gray-300 text-center cursor-pointer hover:bg-gray-100 hover:text-black">
-                            <td className="p-2">{product.productId}</td>
-                            <td className="p-2">{product.name}</td>
-                            <td className="p-2">{product.price}</td>
-                            <td className="p-2">{product.labeledPrice}</td>
-                            <td className="p-2">{product.stock}</td>
-                            <td className="p-2">
-                                <div className="w-full h-full flex justify-center">
-                                <RiDeleteBin6Line onClick={()=>
-                                    deleteProduct(product.productId)
-                                    } className="text-[25px] m-[10px] hover:text-red-500" />
-                                <GrEdit onClick={
-                                    ()=>{
-                                        //load edit product form
-                                        navigate("/admin/editProduct/",{
-                                            state:product
-                                        }
-                                        )
-                                }}
-                                
-                                className="text-[25px] m-[10px] hover:text-blue-500" />
-                                </div>
-                            </td>
-                            
-                        </tr>
-                    );
-                })
-            }
-
-                </tbody>
-            </table>}
-            {
-                !loaded&&
-               <Loader/>
-            }
-            
+            {/* Product Table */}
+            {loaded ? (
+                <div className="overflow-x-auto">
+                    <table className="min-w-full table-auto text-sm text-left border border-gray-200 rounded-lg overflow-hidden shadow">
+                        <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
+                            <tr>
+                                <th className="px-4 py-3">Product ID</th>
+                                <th className="px-4 py-3">Name</th>
+                                <th className="px-4 py-3">Price</th>
+                                <th className="px-4 py-3">Labeled Price</th>
+                                <th className="px-4 py-3">Stock</th>
+                                <th className="px-4 py-3 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                            {products.map((product, index) => (
+                                <tr key={index} className="hover:bg-gray-50 transition">
+                                    <td className="px-4 py-3 font-mono text-gray-700">{product.productId}</td>
+                                    <td className="px-4 py-3 text-gray-800">{product.name}</td>
+                                    <td className="px-4 py-3 text-gray-700">₹{product.price}</td>
+                                    <td className="px-4 py-3 text-gray-700">₹{product.labeledPrice}</td>
+                                    <td className="px-4 py-3 text-gray-700">{product.stock}</td>
+                                    <td className="px-4 py-3 text-center">
+                                        <div className="flex items-center justify-center gap-4">
+                                            <button
+                                                title="Delete"
+                                                onClick={() => deleteProduct(product.productId)}
+                                                className="text-red-500 hover:text-red-700 transition"
+                                            >
+                                                <RiDeleteBin6Line size={20} />
+                                            </button>
+                                            <button
+                                                title="Edit"
+                                                onClick={() => navigate("/admin/editProduct/", { state: product })}
+                                                className="text-blue-500 hover:text-blue-700 transition"
+                                            >
+                                                <GrEdit size={18} />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <Loader />
+            )}
         </div>
-    )
-
+    );
 }
-

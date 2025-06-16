@@ -20,7 +20,6 @@ export function Users() {
                 .then((response) => {
                     setUsers(response.data);
                     setLoaded(true);
-                    console.log("Users fetched successfully", response.data);
                 })
                 .catch((error) => {
                     console.error("Error fetching users:", error);
@@ -32,19 +31,14 @@ export function Users() {
     async function deleteUser(id) {
         const token = localStorage.getItem("token");
         if (!token) {
-            toast.error("Please login first to delete User");
+            toast.error("Please login first to delete user");
             return;
         }
 
         try {
-            await axios.delete(
-                import.meta.env.VITE_BACKEND_URL + "/api/user/" + id,
-                {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                }
-            );
+            await axios.delete(import.meta.env.VITE_BACKEND_URL + "/api/user/" + id, {
+                headers: { Authorization: "Bearer " + token },
+            });
             setLoaded(false);
             toast.success("User deleted successfully");
         } catch (error) {
@@ -54,63 +48,64 @@ export function Users() {
     }
 
     return (
-        <div className="w-full p-6">
-            <h1 className="text-2xl font-semibold mb-4 text-gray-800">👥 User Management</h1>
+        <div className="w-full px-6 py-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-6">👥 User Management</h1>
 
             {loaded ? (
-                <div className="overflow-x-auto rounded-lg shadow bg-white">
-                    <table className="w-full table-auto">
-                        <thead className="bg-gray-100 sticky top-0 z-10">
+                <div className="overflow-x-auto rounded-xl shadow-md bg-white border border-gray-200">
+                    <table className="min-w-full text-sm text-left">
+                        <thead className="bg-gray-100 text-gray-700 text-xs uppercase">
                             <tr>
-                                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">ID</th>
-                                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">First Name</th>
-                                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Last Name</th>
-                                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Email</th>
-                                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Role</th>
-                                <th className="px-4 py-3 text-center text-sm font-medium text-gray-600">Verified</th>
-                                <th className="px-4 py-3 text-center text-sm font-medium text-gray-600">Disabled</th>
-                                <th className="px-4 py-3 text-center text-sm font-medium text-gray-600">Actions</th>
+                                <th className="px-5 py-3">ID</th>
+                                <th className="px-5 py-3">First Name</th>
+                                <th className="px-5 py-3">Last Name</th>
+                                <th className="px-5 py-3">Email</th>
+                                <th className="px-5 py-3">Role</th>
+                                <th className="px-5 py-3 text-center">Verified</th>
+                                <th className="px-5 py-3 text-center">Disabled</th>
+                                <th className="px-5 py-3 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="divide-y divide-gray-100">
                             {users.map((user) => (
                                 <tr
                                     key={user._id}
-                                    className="border-b hover:bg-gray-50 transition-colors text-sm"
+                                    className="hover:bg-gray-50 transition-colors duration-150"
                                 >
-                                    <td className="px-4 py-3 text-gray-700">{user._id}</td>
-                                    <td className="px-4 py-3 text-gray-700">{user.firstName}</td>
-                                    <td className="px-4 py-3 text-gray-700">{user.lastName}</td>
-                                    <td className="px-4 py-3 text-gray-700">{user.email}</td>
-                                    <td className="px-4 py-3 text-gray-700">{user.role}</td>
-                                    <td className="px-4 py-3 text-center">
+                                    <td className="px-5 py-3 text-gray-800 font-mono">{user._id}</td>
+                                    <td className="px-5 py-3 text-gray-700">{user.firstName}</td>
+                                    <td className="px-5 py-3 text-gray-700">{user.lastName}</td>
+                                    <td className="px-5 py-3 text-gray-700">{user.email}</td>
+                                    <td className="px-5 py-3 text-gray-700 capitalize">{user.role}</td>
+                                    <td className="px-5 py-3 text-center">
                                         <span
-                                            className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                            className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${
                                                 user.isEmailVerified
-                                                    ? "bg-green-100 text-green-600"
+                                                    ? "bg-green-100 text-green-700"
                                                     : "bg-red-100 text-red-600"
                                             }`}
                                         >
                                             {user.isEmailVerified ? "Yes" : "No"}
                                         </span>
                                     </td>
-                                    <td className="px-4 py-3 text-center">
+                                    <td className="px-5 py-3 text-center">
                                         <span
-                                            className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                            className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${
                                                 user.isDisabled
                                                     ? "bg-red-100 text-red-600"
-                                                    : "bg-green-100 text-green-600"
+                                                    : "bg-green-100 text-green-700"
                                             }`}
                                         >
                                             {user.isDisabled ? "Yes" : "No"}
                                         </span>
                                     </td>
-                                    <td className="px-4 py-3 text-center">
+                                    <td className="px-5 py-3 text-center">
                                         <button
-                                            className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 text-xs rounded-md transition"
                                             onClick={() => deleteUser(user._id)}
+                                            className="inline-flex items-center gap-1 text-white bg-red-500 hover:bg-red-600 px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition"
                                         >
-                                            <FaTrash className="text-xs" /> Delete
+                                            <FaTrash className="text-xs" />
+                                            Delete
                                         </button>
                                     </td>
                                 </tr>
