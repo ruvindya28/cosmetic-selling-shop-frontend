@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import { useState } from "react";
+import UserData from "./userData";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +29,7 @@ export default function Header() {
         <Link to="/review">Reviews</Link>
       </nav>
 
+
       {/* Desktop search bar */}
       
 
@@ -36,6 +38,9 @@ export default function Header() {
         <div className="lg:hidden">
           <FiSearch />
         </div>
+
+        <UserData />
+        {/* Cart icon */}
         <Link to="/cart">
           <BsCart4 />
         </Link>
