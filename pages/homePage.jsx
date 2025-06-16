@@ -24,7 +24,6 @@ export default function HomePage() {
                     <Route path="/overview/:id" element={<ProductOverview />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
-                    <Route path="/forget" element={<ForgetPasswords />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/about" element={<AboutSection />} />
                     <Route path="/review" element={<ReviewPage />} />

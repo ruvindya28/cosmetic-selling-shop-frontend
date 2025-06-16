@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 export default function ForgetPasswords() {
+
+    const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState("");
+    const [status, setStatus] = useState("email-input"); //email-sent //opt-input //password-reset
+    
+
     return (
         <div className="w-full h-screen bg-gray-200 flex p-2">
             <span></span>
@@ -14,6 +22,7 @@ export default function ForgetPasswords() {
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                             placeholder="Enter your email"
                             required
+                            onClick={(e)=> setEmail(e.target.value)}
                         />
                     </div>
                     <button

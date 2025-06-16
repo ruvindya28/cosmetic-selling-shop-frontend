@@ -135,8 +135,7 @@ export default function LoginPage() {
             <span className="text-green-500 mt-[20px]cursor-pointer hover:text-green-700">
             <Link
               to={"/forget"}
-              
-            >
+>
               Reset Password
             </Link>
               </span>
@@ -145,5 +144,7 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
   
 
