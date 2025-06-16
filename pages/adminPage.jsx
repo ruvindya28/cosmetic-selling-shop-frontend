@@ -10,6 +10,7 @@ import Loader from "../src/components/loader";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Users } from "./admin/users";
 
 export default function AdminPage() {
 
@@ -47,7 +48,7 @@ export default function AdminPage() {
         <div className="w-full h-screen bg-gray-200 flex p-2">
             {userVlidated ? (
                 <>
-           <div className="h-full w-[300px]">
+           <div className="w-[300px]">
            <Link to="/admin/users" className="flex items-center p-2 border"><FaUsers className="mr-2"/>Users</Link>
            <Link to="/admin/products" className="flex items-center p-2 border"><MdWarehouse className="mr-2"/>Products</Link>
            <Link to="/admin/orders" className="flex items-center p-2 border"><FaFileInvoice className="mr-2"/>Orders</Link>
@@ -56,7 +57,7 @@ export default function AdminPage() {
            
            <div className="h-full bg-white w-[calc(100vw-300px)] rounded-lg">
             <Routes path="/*" >
-                <Route path="/users" element={<h1>Users</h1>}/>
+                <Route path="/users" element={<Users/>}/>
                 <Route path="/products" element={<AdminProductsPage />}/>
                 <Route path="/orders" element={<AdminOrders/>}/>
                 <Route path="/addProduct" element={<AddProductForm/>}/>
