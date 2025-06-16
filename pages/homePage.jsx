@@ -9,6 +9,7 @@ import ContactPage from "./client/contact";
 import ReviewPage from "./client/review";
 import Footer from "../src/components/footer";
 import AboutSection from "../src/components/about";
+import Orders from "./client/oders";
 
 export default function HomePage() {
     return (
@@ -25,6 +26,7 @@ export default function HomePage() {
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/about" element={<AboutSection/>} />
                     <Route path="/review" element={<ReviewPage />} />
+                    <Route path="/orders" element={<Orders />} />
                     <Route path="/*" element={<h1>404 Not Found</h1>} />
                 </Routes>
             </div>
