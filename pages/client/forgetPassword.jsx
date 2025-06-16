@@ -1,12 +1,27 @@
+import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function ForgetPasswords() {
 
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
-    const [emailSent, setEmailSent] = useState(true);
+    const [emailSent, setEmailSent] = useState(false);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    function sendMail(){
+        axios.post(import.meta.env.VITE_BACKEND_URL + "/api/user/sendMail",{
+            email: email
+        }).then((response) => {
+            console.log(response.data);
+            setEmailSent(true);
+            toast.success("Email sent successfully! Please check your inbox.");
+        }).catch((error) => {
+            console.error(error);
+            toast.error("Failed to send email. Please try again.");
+        })
+    }
 
 
     return (
@@ -75,7 +90,7 @@ export default function ForgetPasswords() {
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                             placeholder="Enter your email"
                             required
-                            onClick={(e)=> {
+                            onChange={(e)=> {
                                 setEmail(e.target.value);
 
                             }}
@@ -85,8 +100,9 @@ export default function ForgetPasswords() {
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
+                        onClick={sendMail}
                     >
-                        Send Reset Link
+                        Send OTP
                     </button>
                 </form>
         </div>
