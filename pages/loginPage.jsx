@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import { GrGoogle } from "react-icons/gr";
+import { FcGoogle } from "react-icons/fc";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -69,7 +69,7 @@ export default function LoginPage() {
         }) .catch(
             (error) => {
                 console.log("Login failed", error.response.data);
-                toast.error(error.response.data.message||"Login failed")
+                toast.error(error.response.data.message || "Login failed");
                 setLoading(false);
             }
         )
@@ -99,18 +99,17 @@ export default function LoginPage() {
 
           <button
             onClick={handleLogin}
-            className="w-[400px] h-[50px] bg-green-500 rounded-xl cursor-pointer mt-2 text-white font-semibold"
+            className="w-[400px] h-[50px] bg-pink-600 hover:bg-pink-700 rounded-xl cursor-pointer mt-2 text-white font-semibold"
           >
             {loading ? "Loading..." : "Login"}
           </button>
 
           <button
             onClick={() => loginWithGoogle()}
-            className="w-[400px] h-[50px] bg-green-500 rounded-xl cursor-pointer flex justify-center items-center mt-2 text-white font-semibold"
-            
+            className="w-[400px] h-[50px] bg-white hover:bg-gray-100 rounded-xl cursor-pointer flex justify-center items-center mt-2 text-black font-semibold"
           >
              
-            <GrGoogle className="mr-[10px]" />
+            <FcGoogle className="mr-[10px] text-2xl" />
             {loading ? "Loading..." : "Login with google"}
            
           </button>
@@ -120,7 +119,7 @@ export default function LoginPage() {
             &nbsp;
             <Link
               to={"/register"}
-              className="text-green-500 mt-[20px]cursor-pointer hover:text-green-700"
+              className="text-pink-600 mt-[20px]cursor-pointer hover:text-pink-700"
 
             >
               Register Now
@@ -132,7 +131,7 @@ export default function LoginPage() {
           <p className="text-gray-600 text-center m-[10px] mt-4">
             Forgot your password?
             &nbsp;
-            <span className="text-green-500 mt-[20px]cursor-pointer hover:text-green-700">
+            <span className="text-pink-600 hover:text-pink-700 mt-[20px]cursor-pointer">
             <Link
               to={"/forget"}
 >

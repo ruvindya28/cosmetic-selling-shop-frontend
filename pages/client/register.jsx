@@ -33,14 +33,7 @@ export default function RegisterPage() {
       .then((response) => {
         console.log("Registration successful", response.data);
         toast.success("Registration successful");
-        localStorage.setItem("token", response.data.token);
-
-        const user = response.data.user;
-        if (user.role === "admin") {
-          navigate("/admin");
-        } else {
-          navigate("/");
-        }
+        navigate("/login");
         setLoading(false);
       })
       .catch((error) => {
@@ -100,7 +93,7 @@ export default function RegisterPage() {
 
           <button
             onClick={handleRegister}
-            className="w-[400px] h-[50px] bg-green-500 rounded-xl cursor-pointer mt-4"
+            className="w-[400px] h-[50px] bg-pink-500 text-white hover:bg-pink-600 hover:text-white rounded-xl cursor-pointer mt-4"
           >
             {loading ? "Loading..." : "Register"}
           </button>
@@ -108,7 +101,7 @@ export default function RegisterPage() {
           <p className="text-gray-600 text-center m-[10px]">
             Already have an account?
             &nbsp;
-            <span className="text-green-500 cursor-pointer hover:text-green-700">
+            <span className="text-pink-600 cursor-pointer hover:text-pink-700">
               <Link to={"/login"}>Login</Link>
             </span>
           </p>
