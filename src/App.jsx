@@ -17,13 +17,12 @@ function App() {
     <BrowserRouter>
     <Toaster position='top-right'/>
     <Routes path="/*">
-    <Route path="/admin/*" element={<AdminPage />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/testing" element={<Testing />} />
-    <Route path="/register" element={<RegisterPage />} />
-    <Route path="/forget" element={<ForgetPasswords />} />
-    <Route path="/*" element={<HomePage />}/>
-    <Route path="/r" element={<ResponsiveTesting/>}/>
+      <Route path="/admin/*" element={<AdminPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/testing" element={<Testing />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forget" element={<ForgetPasswords />} />
+      <Route path="/*" element={<HomePage />}/>
     </Routes>
     </BrowserRouter>
     </GoogleOAuthProvider>

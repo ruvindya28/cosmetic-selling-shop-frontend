@@ -65,7 +65,7 @@ export default function NewArrivals() {
                     ID: {product.productId}
                   </p>
                   <p className="text-pink-600 font-bold mt-2">
-                    ${product.price.toFixed(2)}
+                  LKR {product.price.toFixed(2)}
                   </p>
                 </div>
               </Link>

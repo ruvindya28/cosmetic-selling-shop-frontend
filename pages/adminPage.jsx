@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Users } from "./admin/users";
+import AdminDash from "./admin/admindash";
 
 export default function AdminPage() {
     const [userValidated, setUserValidated] = useState(false);
@@ -80,6 +81,7 @@ export default function AdminPage() {
             <main className="flex-1 overflow-y-auto p-6">
                 <div className="bg-white rounded-xl shadow p-6 min-h-full">
                     <Routes>
+                        <Route path="/" element={<AdminDash />} />
                         <Route path="/users" element={<Users />} />
                         <Route path="/products" element={<AdminProductsPage />} />
                         <Route path="/orders" element={<AdminOrders />} />

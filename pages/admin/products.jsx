@@ -73,8 +73,8 @@ export default function AdminProductsPage() {
                                 <tr key={index} className="hover:bg-gray-50 transition">
                                     <td className="px-4 py-3 font-mono text-gray-700">{product.productId}</td>
                                     <td className="px-4 py-3 text-gray-800">{product.name}</td>
-                                    <td className="px-4 py-3 text-gray-700">₹{product.price}</td>
-                                    <td className="px-4 py-3 text-gray-700">₹{product.labeledPrice}</td>
+                                    <td className="px-4 py-3 text-gray-700">LKR {product.price}</td>
+                                    <td className="px-4 py-3 text-gray-700">LKR {product.labeledPrice}</td>
                                     <td className="px-4 py-3 text-gray-700">{product.stock}</td>
                                     <td className="px-4 py-3 text-center">
                                         <div className="flex items-center justify-center gap-4">
