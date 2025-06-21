@@ -40,7 +40,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500">
         <div>
           <h1 className="text-2xl font-bold text-pink-500 pl-10">
-            <Link to="/">CRYSTAL BEAUTY</Link>
+            <Link to="/">BEAUTY ROOM</Link>
           </h1>
           <p className="max-w-[410px] mt-6">
             Crystal Beauty offers a wide range of skincare and makeup products for all skin types.
@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="py-4 text-center text-sm md:text-base text-gray-500/80">
-        Copyright 2025 © Crystal Beauty. All Rights Reserved.
+        Copyright 2025 © Beauty Room. All Rights Reserved.
       </p>
     </div>
   );
