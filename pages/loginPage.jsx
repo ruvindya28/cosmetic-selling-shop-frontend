@@ -119,7 +119,7 @@ export default function LoginPage() {
             &nbsp;
             <Link
               to={"/register"}
-              className="text-pink-600 mt-[20px]cursor-pointer hover:text-pink-700"
+              className="text-pink-600 mt-[20px] cursor-pointer hover:text-pink-700"
 
             >
               Register Now
@@ -131,7 +131,7 @@ export default function LoginPage() {
           <p className="text-gray-600 text-center m-[10px] mt-4">
             Forgot your password?
             &nbsp;
-            <span className="text-pink-600 hover:text-pink-700 mt-[20px]cursor-pointer">
+            <span className="text-pink-600 hover:text-pink-700 mt-[20px] cursor-pointer">
             <Link
               to={"/forget"}
 >

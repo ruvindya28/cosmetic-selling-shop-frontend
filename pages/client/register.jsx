@@ -98,7 +98,7 @@ export default function RegisterPage() {
             {loading ? "Loading..." : "Register"}
           </button>
 
-          <p className="text-gray-600 text-center m-[10px]">
+          <p className="text-gray-600 text-center m-[10px] cursor-pointer">
             Already have an account?
             &nbsp;
             <span className="text-pink-600 cursor-pointer hover:text-pink-700">

@@ -38,7 +38,7 @@ export default function ImageCarousel() {
   };
 
   return (
-    <div className="w-full flex justify-center px-8 pt-12"> {/* Increased padding */}
+    <div className="w-full flex justify-center px-8 pt-8"> {/* Increased padding */}
       <div className="relative w-full max-w-7.2xl h-[500px] overflow-hidden bg-black rounded-xl shadow-2xl select-none">
         <h2 className="absolute top-4 left-1/2 transform -translate-x-1/2 text-3xl font-bold text-white drop-shadow-lg z-10">
           Beauty Moments
