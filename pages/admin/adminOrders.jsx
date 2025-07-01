@@ -34,7 +34,7 @@ export default function AdminOrders() {
     }
 
     return (
-        <div className="w-full min-h-screen bg-gray-100 p-6">
+        <div className="w-full min-h-screen bg-white p-6">
             {loaded ? (
                 <div className="overflow-x-auto shadow-md rounded-xl bg-white p-4">
                     <h1 className="text-2xl font-semibold text-gray-800 mb-6">📦 Orders</h1>

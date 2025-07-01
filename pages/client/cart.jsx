@@ -44,7 +44,7 @@ export default function CartPage() {
 
                   <div className="flex items-center gap-2">
                     <button
-                      className="w-8 h-8 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition flex justify-center items-center"
+                      className="w-8 h-8 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition flex justify-center items-center cursor-pointer"
                       onClick={() => {
                         addToCart(item, -1);
                         setCartLoaded(false);
@@ -54,7 +54,7 @@ export default function CartPage() {
                     </button>
                     <span className="text-lg font-semibold">{item.quantity}</span>
                     <button
-                      className="w-8 h-8 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition flex justify-center items-center"
+                      className="w-8 h-8 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition flex justify-center items-center cursor-pointer"
                       onClick={() => {
                         addToCart(item, 1);
                         setCartLoaded(false);
@@ -69,7 +69,7 @@ export default function CartPage() {
                   </div>
 
                   <button
-                    className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+                    className="absolute top-2 right-2 text-red-500 hover:text-red-700 cursor-pointer"
                     onClick={() => {
                       removeFromCart(item.productId);
                       setCartLoaded(false);
@@ -104,7 +104,7 @@ export default function CartPage() {
                     state: { items: cart },
                   })
                 }
-                className="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-lg shadow-md text-lg font-semibold transition"
+                className="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-lg shadow-md text-lg font-semibold transition cursor-pointer"
               >
                 Proceed to Checkout
               </button>

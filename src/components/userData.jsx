@@ -149,7 +149,7 @@ export default function UserData() {
                   role="menuitem"
                 >
                   <FaSignOutAlt className="text-red-500 group-hover:text-red-600 text-xs" />
-                  <span className="font-medium">Logout</span>
+                  <span className="font-medium cursor-pointer">Logout</span>
                 </button>
               </div>
             </div>

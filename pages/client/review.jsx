@@ -48,9 +48,9 @@ export default function ReviewPage() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 p-6 flex flex-col items-center">
+    <div className="min-h-screen bg-white p-6 flex flex-col items-center">
       <div className="max-w-4xl w-full">
-        <h2 className="text-3xl font-bold text-pink-600 mb-6 text-center">
+        <h2 className="text-3xl font-bold text-black mb-6 text-center">
           Customer Reviews
         </h2>
 

@@ -100,7 +100,7 @@ export default function CheckoutPage() {
                     );
                     setCart(updatedCart);
                   }}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-lg font-bold"
+                  className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-lg font-bold cursor-pointer"
                 >
                   -
                 </button>
@@ -114,7 +114,7 @@ export default function CheckoutPage() {
                     );
                     setCart(updatedCart);
                   }}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-lg font-bold"
+                  className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-lg font-bold cursor-pointer"
                 >
                   +
                 </button>
@@ -131,7 +131,7 @@ export default function CheckoutPage() {
                   );
                   setCart(updatedCart);
                 }}
-                className="text-red-500 hover:text-red-600"
+                className="text-red-500 hover:text-red-600 cursor-pointer"
               >
                 <TbTrash size={20} />
               </button>
@@ -198,7 +198,7 @@ export default function CheckoutPage() {
         <div className="text-right pt-4">
           <button
             onClick={placeOrder}
-            className="bg-pink-500 text-white px-6 py-3 rounded-md hover:bg-pink-600 transition text-lg font-medium"
+            className="bg-pink-500 text-white px-6 py-3 rounded-md hover:bg-pink-600 transition text-lg font-medium cursor-pointer"
           >
             Place Order
           </button>

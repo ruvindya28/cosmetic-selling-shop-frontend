@@ -11,6 +11,10 @@ import Footer from "../src/components/footer";
 import AboutSection from "../src/components/about";
 import Orders from "./client/oders";
 import ForgetPasswords from "./client/forgetPassword";
+import FAQPage from "../src/components/FAQ";
+import BestSellers from "../src/components/bestSellers";
+import DeliveryInfo from "../src/components/DeliveryInfo";
+
 
 export default function HomePage() {
     return (
@@ -28,6 +32,10 @@ export default function HomePage() {
                     <Route path="/about" element={<AboutSection />} />
                     <Route path="/review" element={<ReviewPage />} />
                     <Route path="/orders" element={<Orders />} />
+                    <Route path="/faqs" element={<FAQPage/>} />
+                    <Route path="/best-sellers" element={<BestSellers/>} />
+                    <Route path="/delivery" element={<DeliveryInfo/>} />
+                    
                     <Route path="/*" element={<h1>404 Not Found</h1>} />
                 </Routes>
             </div>

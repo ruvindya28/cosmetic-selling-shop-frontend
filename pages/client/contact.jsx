@@ -27,12 +27,12 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 p-6 flex flex-col items-center justify-center">
-      <div className="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="min-h-screen bg-white  p-6 flex flex-col items-center justify-center">
+      <div className="max-w-4xl w-full bg-white border border-black rounded-2xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Contact Info */}
         <div className="space-y-4">
-          <h2 className="text-3xl font-bold text-pink-600">Get in Touch</h2>
+          <h2 className="text-3xl font-bold text-black">Get in Touch</h2>
           <p className="text-gray-600">
             We'd love to hear from you! Whether you're curious about products, feedback, or just want to chat.
           </p>
@@ -80,7 +80,7 @@ export default function ContactPage() {
       </div>
 
       {/* Optional Map */}
-      <div className="mt-10 w-full max-w-4xl h-64 rounded-xl overflow-hidden shadow-md">
+      <div className="mt-10 w-full max-w-4xl h-64 rounded-xl overflow-hidden shadow-md mb-10">
         <iframe
           title="Shop Location"
           className="w-full h-full"
