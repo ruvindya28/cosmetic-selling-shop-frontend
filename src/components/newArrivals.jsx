@@ -42,7 +42,7 @@ export default function NewArrivals() {
 
   return (
     <div className="container mx-auto px-6 py-12 text-gray-800">
-      <h2 className="text-3xl font-bold mb-8 text-center">✨ New Arrivals</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center">New Arrivals</h2>
 
       {products.length === 0 ? (
         <p className="text-center text-gray-500">No products found.</p>
@@ -76,7 +76,7 @@ export default function NewArrivals() {
                     toast.success("Product added to cart");
                     console.log(getCart());
                   }}
-                  className="w-full flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-md transition duration-200"
+                  className="w-full flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-md transition duration-200 cursor-pointer"
                 >
                   <FaShoppingCart /> Add to Cart
                 </button>
