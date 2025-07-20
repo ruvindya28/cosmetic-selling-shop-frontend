@@ -1,4 +1,4 @@
-# 💄 Cosmetic Shop Web Application (MERN STACK)
+# Cosmetic Shop Web Application (MERN STACK)
 ![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?logo=react)
 ![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js)
 ![Express](https://img.shields.io/badge/Framework-Express.js-000000?logo=express)
