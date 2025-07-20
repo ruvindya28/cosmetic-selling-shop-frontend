@@ -1,12 +1,49 @@
-# React + Vite
+# 💄 Cosmetic Shop Web Application (MERN STACK)
+![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?logo=react)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js)
+![Express](https://img.shields.io/badge/Framework-Express.js-000000?logo=express)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack e-commerce web application built using the **MERN stack (MongoDB, Express.js, React, Node.js)**. Users can browse cosmetic products, place orders, and manage their own orders. An admin panel is included for managing products, viewing all orders, and accessing a dashboard overview.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 🛍️ User Functionality
+- View list of cosmetic products
+- Place orders
+- View personal order history
+- Delete/cancel orders
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛠️ Admin Panel
+- Admin authentication
+- Add new cosmetic products
+- Delete existing products
+- View all customer orders
+- Dashboard overview (order stats, product count, etc.)
+
+---
+
+## 🧰 Tech Stack
+
+**Frontend:**
+- React.js
+- Axios
+- React Router
+- TailwindCSS
+
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+
+**Admin & User Handling:**
+- JWT Authentication
+- Role-based access control
+  
+---
+
+## 🌐 Live Demo
+
+[ Click Here to Visit](https://beautyroom-cosmatic-shop.vercel.app/)
