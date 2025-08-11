@@ -52,7 +52,7 @@ function handleReset() {
           onReset={handleReset}/>
               {
                   productsLoaded?
-                  <div className="w-full h-full flex flex-wrap justify-center">
+                  <div className= "w-full h-full flex flex-wrap justify-center">
                     {
                         productList.map((product)=>{
                             return(
